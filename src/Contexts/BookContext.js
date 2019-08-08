@@ -20,16 +20,16 @@ const BookContextProvider = props => {
     // ]
     initialData
   );
-  
 
   useEffect(() => {
     localStorage.setItem("books", JSON.stringify(books));
   }, [books]);
 
   const addBook = (title, author) => {
-    setBooks([...books, { title: title, author: author, id: Math.random(), completed: false }]);
-    // setLocalStorage()
-    
+    setBooks([
+      ...books,
+      { title: title, author: author, id: Math.random(), completed: false }
+    ]);
   };
 
   const deleteBook = id => {
@@ -40,39 +40,33 @@ const BookContextProvider = props => {
     );
   };
 
+  const toggleCompletion = id => {
+    const booksToToggle = books.map(book => {
+      if (book.id === id) {
+        return { ...book, completed: !book.completed };
+      }
+      return book;
+    });
 
-  // new stuff
+    setBooks(booksToToggle);
+  };
 
+  const updateBook = (id, title, author) => {
+    const booksToUpdate = books.map(book => {
+      if (book.id === id) {
+        return { ...book, title: title, author: author };
+      }
+      console.log(book);
+      return book;
+    });
 
-const toggleCompletion = (id) => {
-  const booksToToggle = books.map(book=> {
-    if(book.id === id) {
-      return {...book, completed: !book.completed}
-    }
-    return book
-  })
-
-  setBooks(booksToToggle)
-}
-
-
-
-const updateBook = (id, title, author) => {
-  const booksToUpdate = books.map(book => {
-    if(book.id === id) {
-      return {...book, title: title, author: author}
-    } 
-    console.log(book)
-    return book
-  })
-
-  setBooks(booksToUpdate)
-}
-  // end of new stuff
-
+    setBooks(booksToUpdate);
+  };
 
   return (
-    <BookContext.Provider value={{ books, addBook, deleteBook, updateBook, toggleCompletion }}>
+    <BookContext.Provider
+      value={{ books, addBook, deleteBook, updateBook, toggleCompletion }}
+    >
       {props.children}
     </BookContext.Provider>
   );

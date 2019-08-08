@@ -19,35 +19,37 @@ const BookDetails = ({ book }) => {
     toggleForm();
   };
 
-  const handleToggleCompletion =()=> {
-    toggleCompletion(book.id)
-  }
+  const handleToggleCompletion = () => {
+    toggleCompletion(book.id);
+  };
 
   let result;
   if (isEditing) {
     result = (
       <div className="my-2">
         <li className="list-group-item  bg-warning">
-        <form onSubmit={handleUpdateSubmit} className="my-2">
-        <h4 className="text-white">Editing...</h4>
-          <div className="form-group">
-            <input
-              className="form-control form-control-sm"
-              type="text"
-              value={title}
-              onChange={e => setTitle(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              className="form-control form-control-sm"
-              type="text"
-              value={author}
-              onChange={e => setAuthor(e.target.value)}
-            />
-          </div>
-          <button className="btn btn-success btn-sm"><i className="far fa-check-square"></i> Update</button>
-        </form>
+          <form onSubmit={handleUpdateSubmit} className="my-2">
+            <h4 className="text-white">Editing...</h4>
+            <div className="form-group">
+              <input
+                className="form-control form-control-sm"
+                type="text"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control form-control-sm"
+                type="text"
+                value={author}
+                onChange={e => setAuthor(e.target.value)}
+              />
+            </div>
+            <button className="btn btn-success btn-sm">
+              <i className="far fa-check-square" /> Update
+            </button>
+          </form>
         </li>
       </div>
     );
@@ -66,24 +68,19 @@ const BookDetails = ({ book }) => {
           <button className="btn btn-primary m-1" onClick={toggleForm}>
             <i className="far fa-edit" /> Edit
           </button>
-          <button className={book.completed ? "btn btn-success m-1" : "btn btn-secondary m-1"} onClick={handleToggleCompletion}>
-          <i className={book.completed ? "far fa-smile" : "far fa-meh"}></i> Status
+          <button
+            className={
+              book.completed ? "btn btn-success m-1" : "btn btn-secondary m-1"
+            }
+            onClick={handleToggleCompletion}
+          >
+            <i className={book.completed ? "far fa-smile" : "far fa-meh"} />{" "}
+            Status
           </button>
-
         </li>
       </div>
     );
   }
-
-  // return (
-  //     <div>
-  //          <li>
-  //             <div>{book.title}</div>
-  //             <div>{book.author}</div>
-  //             <button onClick={()=>deleteBook(book.id)}>Delete Book</button>
-  //          </li>
-  //     </div>
-  // )
 
   return result;
 };
