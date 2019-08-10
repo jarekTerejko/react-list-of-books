@@ -28,7 +28,13 @@ const BookContextProvider = props => {
   const addBook = (title, author) => {
     setBooks([
       ...books,
-      { title: title, author: author, id: Math.random(), completed: false }
+      {
+        title: title,
+        author: author,
+        id: Math.random(),
+        completed: false,
+        recommended: false
+      }
     ]);
   };
 
@@ -44,6 +50,17 @@ const BookContextProvider = props => {
     const booksToToggle = books.map(book => {
       if (book.id === id) {
         return { ...book, completed: !book.completed };
+      }
+      return book;
+    });
+    
+    setBooks(booksToToggle);
+  };
+
+  const toggleRecommendation = id => {
+    const booksToToggle = books.map(book => {
+      if (book.id === id) {
+        return { ...book, recommended: !book.recommended };
       }
       return book;
     });
@@ -65,7 +82,14 @@ const BookContextProvider = props => {
 
   return (
     <BookContext.Provider
-      value={{ books, addBook, deleteBook, updateBook, toggleCompletion }}
+      value={{
+        books,
+        addBook,
+        deleteBook,
+        updateBook,
+        toggleCompletion,
+        toggleRecommendation
+      }}
     >
       {props.children}
     </BookContext.Provider>

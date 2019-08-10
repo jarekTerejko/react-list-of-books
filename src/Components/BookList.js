@@ -13,9 +13,9 @@ const BookList = () => {
 
   return books.length ? (
     <div className="my-5">
-      <h3 className="my-3">Search Your Book List</h3>
+      <h3 className="my-3">Search for a book from your list</h3>
 
-      <label htmlFor="search">Search Your Book List</label>
+      <label htmlFor="search">Search for...</label>
 
       <div className="input-group mb-3">
         <input
@@ -42,8 +42,8 @@ const BookList = () => {
       </ul>
     </div>
   ) : (
-    <div>
-      <p>No books to read :(</p>
+    <div my-5>
+      <h2>Your list of books is empty :(</h2>
     </div>
   );
 };
