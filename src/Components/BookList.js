@@ -42,8 +42,8 @@ const BookList = () => {
       </ul>
     </div>
   ) : (
-    <div my-5>
-      <h2>Your list of books is empty :(</h2>
+    <div>
+      <h2>Your List Of Books is empty :(</h2>
     </div>
   );
 };

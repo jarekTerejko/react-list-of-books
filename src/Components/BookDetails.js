@@ -2,7 +2,12 @@ import React, { useContext, useState } from "react";
 import { BookContext } from "../Contexts/BookContext";
 
 const BookDetails = ({ book }) => {
-  const { deleteBook, updateBook, toggleCompletion, toggleRecommendation } = useContext(BookContext);
+  const {
+    deleteBook,
+    updateBook,
+    toggleCompletion,
+    toggleRecommendation
+  } = useContext(BookContext);
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
@@ -76,13 +81,18 @@ const BookDetails = ({ book }) => {
             className={
               book.completed ? "btn btn-success m-1" : "btn btn-secondary m-1"
             }
-            onClick={()=> toggleCompletion(book.id)}
+            onClick={() => toggleCompletion(book.id)}
           >
             <i className={book.completed ? "far fa-smile" : "far fa-meh"} />{" "}
             Status
           </button>
-          <button className={ book.recommended ? "btn btn-primary m-1" : "btn btn-secondary m-1"} onClick={()=> toggleRecommendation(book.id)}>
-          <i className="fas fa-clipboard-check"></i> Recommend
+          <button
+            className={
+              book.recommended ? "btn btn-primary m-1" : "btn btn-secondary m-1"
+            }
+            onClick={() => toggleRecommendation(book.id)}
+          >
+            <i className="fas fa-clipboard-check" /> Recommend
           </button>
         </li>
       </div>

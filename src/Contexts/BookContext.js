@@ -46,6 +46,10 @@ const BookContextProvider = props => {
     );
   };
 
+  const deleteAllBooks = () => {
+    setBooks([])
+  }
+
   const toggleCompletion = id => {
     const booksToToggle = books.map(book => {
       if (book.id === id) {
@@ -53,7 +57,7 @@ const BookContextProvider = props => {
       }
       return book;
     });
-    
+
     setBooks(booksToToggle);
   };
 
@@ -88,7 +92,8 @@ const BookContextProvider = props => {
         deleteBook,
         updateBook,
         toggleCompletion,
-        toggleRecommendation
+        toggleRecommendation, 
+        deleteAllBooks
       }}
     >
       {props.children}

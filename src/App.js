@@ -4,20 +4,21 @@ import Navbar from "./Components/Navbar";
 import BookList from "./Components/BookList";
 import BookForm from "./Components/BookForm";
 import Statistics from "./Components/Statistics";
+import StatisticsContextProvider from "./Contexts/StatisticsContext";
 
 function App() {
   return (
-    
-      <BookContextProvider>
+    <BookContextProvider>
+      <StatisticsContextProvider>
         <Navbar />
-        <div className="container">
         <Statistics />
+      </StatisticsContextProvider>
+      <div className="container">
+      <BookForm />
         <BookList />
-        <BookForm/>
-        </div>
         
-      </BookContextProvider>
-    
+      </div>
+    </BookContextProvider>
   );
 }
 
