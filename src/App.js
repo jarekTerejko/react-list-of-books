@@ -5,19 +5,20 @@ import BookList from "./Components/BookList";
 import BookForm from "./Components/BookForm";
 import Statistics from "./Components/Statistics";
 import StatisticsContextProvider from "./Contexts/StatisticsContext";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <BookContextProvider>
       <StatisticsContextProvider>
         <Navbar />
-        <Statistics />
+        <main style={{ minHeight: "calc(100vh - 168px)" }}>
+          <Statistics />
+          <BookForm />
+          <BookList />
+        </main>
       </StatisticsContextProvider>
-      <div className="container">
-      <BookForm />
-        <BookList />
-        
-      </div>
+      <Footer />
     </BookContextProvider>
   );
 }

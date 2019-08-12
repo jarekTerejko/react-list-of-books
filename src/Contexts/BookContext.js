@@ -77,7 +77,6 @@ const BookContextProvider = props => {
       if (book.id === id) {
         return { ...book, title: title, author: author };
       }
-      console.log(book);
       return book;
     });
 

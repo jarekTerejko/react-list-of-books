@@ -52,7 +52,7 @@ const Statistics = () => {
     <div className="container">
       <div className="my-5">
         <h3 className="my-3">Statistics</h3>
-        <table className="table table-dark table-bordered">
+        <table className="table table-dark table-bordered table-sm">
           <thead>
             <tr>
               <th scope="col" />

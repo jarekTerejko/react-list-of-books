@@ -12,7 +12,7 @@ const BookDetails = ({ book }) => {
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
 
-  console.log(isEditing);
+  // console.log(isEditing);
 
   const toggleForm = () => {
     setIsEditing(!isEditing);
@@ -24,42 +24,36 @@ const BookDetails = ({ book }) => {
     toggleForm();
   };
 
-  // const handleToggleCompletion = () => {
-  //   toggleCompletion(book.id);
-  // };
-
-  // const handleToggleRecommendation= ()=> {
-  //   toggleRecommendation(book.id)
-  // }
-
   let result;
   if (isEditing) {
     result = (
-      <div className="my-2">
-        <li className="list-group-item  bg-warning">
-          <form onSubmit={handleUpdateSubmit} className="my-2">
-            <h4 className="text-white">Editing...</h4>
-            <div className="form-group">
-              <input
-                className="form-control form-control-sm"
-                type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                className="form-control form-control-sm"
-                type="text"
-                value={author}
-                onChange={e => setAuthor(e.target.value)}
-              />
-            </div>
-            <button className="btn btn-success btn-sm">
-              <i className="far fa-check-square" /> Update
-            </button>
-          </form>
-        </li>
+      <div className="container">
+        <div className="my-2">
+          <li className="list-group-item bg-warning">
+            <form onSubmit={handleUpdateSubmit} className="my-2">
+              <h4 className="text-white">Editing...</h4>
+              <div className="form-group">
+                <input
+                  className="form-control form-control-sm"
+                  type="text"
+                  value={title}
+                  onChange={e => setTitle(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control form-control-sm"
+                  type="text"
+                  value={author}
+                  onChange={e => setAuthor(e.target.value)}
+                />
+              </div>
+              <button className="btn btn-success btn-sm">
+                <i className="far fa-check-square" /> Update
+              </button>
+            </form>
+          </li>
+        </div>
       </div>
     );
   } else {
@@ -69,17 +63,17 @@ const BookDetails = ({ book }) => {
           <h5 style={{ fontWeight: 400 }}>Tilte: {book.title}</h5>
           <h6 style={{ fontWeight: 400 }}>Author: {book.author}</h6>
           <button
-            className="btn btn-danger m-1"
+            className="btn btn-danger m-1 btn-sm"
             onClick={() => deleteBook(book.id)}
           >
             <i className="far fa-trash-alt" /> Remove
           </button>
-          <button className="btn btn-primary m-1" onClick={toggleForm}>
+          <button className="btn btn-primary m-1  btn-sm" onClick={toggleForm}>
             <i className="far fa-edit" /> Edit
           </button>
           <button
             className={
-              book.completed ? "btn btn-success m-1" : "btn btn-secondary m-1"
+              book.completed ? "btn btn-success m-1  btn-sm" : "btn btn-secondary m-1 btn-sm"
             }
             onClick={() => toggleCompletion(book.id)}
           >
@@ -88,11 +82,11 @@ const BookDetails = ({ book }) => {
           </button>
           <button
             className={
-              book.recommended ? "btn btn-primary m-1" : "btn btn-secondary m-1"
+              book.recommended ? "btn btn-primary m-1  btn-sm" : "btn btn-secondary m-1  btn-sm"
             }
             onClick={() => toggleRecommendation(book.id)}
           >
-            <i className="fas fa-clipboard-check" /> Recommend
+            <i className={ book.recommended ? "fas fa-thumbs-up" : "fas fa-thumbs-down"}></i> Recommend
           </button>
         </li>
       </div>
